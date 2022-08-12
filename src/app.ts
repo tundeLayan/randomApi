@@ -11,10 +11,12 @@ let response;
 
 const setPageIndex = (page?: number) => {
   // pageViewLabel?.replaceChildren("");
-  if (page) {
-    const currentPageText = document.createTextNode(`Showing Page ${currentPageNumber}`);
+  // if (page) {
+    const currentPageText = document.createTextNode(
+      `Showing Page ${page||1}`
+    );
     pageViewLabel?.replaceChildren(currentPageText);
-  }
+  // }
 }
 
 const handleNextClick = async () => {

@@ -1,6 +1,6 @@
 const BASE_URL = (pageNumber: number) => {
-  return `https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84&page=${pageNumber}`
-}
+  return `https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84&page=${pageNumber}`;
+};
 const tBody = document.querySelector('[data-sink="tableBody"]');
 interface IRow {
   id: string;
