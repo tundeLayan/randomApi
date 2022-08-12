@@ -6,7 +6,7 @@ const startApp = async () => {
     let response;
     const BASE_URL = (pageNumber: number)=>`https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84&page=${pageNumber}`;
 
-    const pageView = document.querySelector('[data-pageview="pageView"]');
+    const pageView = document.querySelector('label[data-pageview="pageView"]');
     const nextBtn = document.querySelector('[data-nextbtn="nextBtn"]');
     const prevBtn = document.querySelector('[data-prevbtn="prevBtn"]');
     const tBody = document.querySelector('[data-sink="tableBody"]');
