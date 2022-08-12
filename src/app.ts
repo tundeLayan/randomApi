@@ -6,6 +6,7 @@ const startApp = async () => {
     let response;
     const BASE_URL = (pageNumber: number)=>`https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84&page=${pageNumber}`;
 
+    const pageView = document.querySelector('[data-pageview="pageView"]');
     const nextBtn = document.querySelector('[data-nextbtn="nextBtn"]');
     const prevBtn = document.querySelector('[data-prevbtn="prevBtn"]');
     const tBody = document.querySelector('[data-sink="tableBody"]');
@@ -58,7 +59,7 @@ const startApp = async () => {
         enableBtn(prevBtn);
         // using just this was not enough to track array index
         currentPageNumber+=1;
-
+        
         // TODO: check if next exists
         if(arrayIndex % 2 === 1){
             arrayIndex+=1;
@@ -69,6 +70,13 @@ const startApp = async () => {
             response = await getData(arrayIndex);
             populateTable(response?.results[0][arrayIndex]);
         }
+        setPageIndex(currentPageNumber);
+    }
+
+    const setPageIndex = (page: number) => {
+        pageView?.replaceChildren("");
+        const currentPageText = document.createTextNode(`Showing Page ${page}`);
+        pageView?.appendChild(currentPageText);
     }
 
     const handlePrevClick = async () => {
@@ -85,6 +93,7 @@ const startApp = async () => {
             arrayIndex-=1;
             populateTable(response?.results[0][arrayIndex]);
         }
+        setPageIndex(currentPageNumber);
     }
 
     const disableBtn = (btn) => {
@@ -103,7 +112,7 @@ const startApp = async () => {
     disableBtn(prevBtn);
 
     response = await getData(currentPageNumber);
-
+    setPageIndex(currentPageNumber);
     // if there is next, enable next button
     if(response?.results[0].paging.next){
         enableBtn(nextBtn);
