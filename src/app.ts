@@ -10,13 +10,8 @@ let arrayIndex = 1;
 let response;
 
 const setPageIndex = (page?: number) => {
-  // pageViewLabel?.replaceChildren("");
-  // if (page) {
-    const currentPageText = document.createTextNode(
-      `Showing Page ${page||1}`
-    );
-    pageViewLabel?.replaceChildren(currentPageText);
-  // }
+  const currentPageText = document.createTextNode(`Showing Page ${page || currentPageNumber}`);
+  pageViewLabel?.replaceChildren(currentPageText);
 }
 
 const handleNextClick = async () => {
