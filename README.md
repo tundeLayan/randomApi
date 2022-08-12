@@ -1,3 +1,4 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4b6b7b65d0cb4683a9805383f7fc3fec)](https://www.codacy.com/gh/tundeLayan/randomApi/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tundeLayan/randomApi&amp;utm_campaign=Badge_Grade)
 # Frontend Assessment
 
 Build and deploy a very simple frontend app for paginated data, that does the following
