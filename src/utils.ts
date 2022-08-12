@@ -1,5 +1,12 @@
-const BASE_URL = (pageNumber: number)=>`https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84&page=${pageNumber}`;
+const BASE_URL = (pageNumber: number) => `https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84&page=${pageNumber}`;
 const tBody = document.querySelector('[data-sink="tableBody"]');
+interface IRow {
+  id: string;
+  row: number;
+  age: number;
+  gender: string;
+};
+interface IRows extends Array<IRow>{};
 
 export const getData = async (currentPageNumber: number) => {
   try {
@@ -11,35 +18,34 @@ export const getData = async (currentPageNumber: number) => {
     alert(err?.message || err?.response?.data?.message);
     throw new Error(err);
   }
-}
+};
 
 export const populateTable = (tableData: IRows) => {
-    // clear the current table data
-    tBody?.replaceChildren("");
+  // clear the current table data
+  tBody?.replaceChildren("");
 
-    // iterate over the tableData
-    tableData?.forEach((data, idx)=>{
-        const trow = document.createElement("tr");
-        trow.setAttribute("data-entryid", data.id);
+  // iterate over the tableData
+  tableData?.forEach((data, idx)=>{
+    const trow = document.createElement("tr");
+    trow.setAttribute("data-entryid", data.id);
 
-        const tColumn1 = document.createElement("td");
-        const tColumn2 = document.createElement("td");
-        const tColumn3 = document.createElement("td");
+    const tColumn1 = document.createElement("td");
+    const tColumn2 = document.createElement("td");
+    const tColumn3 = document.createElement("td");
 
-        const firstCol = document.createTextNode(data.row.toString());
-        const secondCol = document.createTextNode(data.gender);
-        const thirdCol = document.createTextNode(data.age.toString());
+    const firstCol = document.createTextNode(data.row.toString());
+    const secondCol = document.createTextNode(data.gender);
+    const thirdCol = document.createTextNode(data.age.toString());
 
-        tColumn1.appendChild(firstCol);
-        tColumn2.appendChild(secondCol);
-        tColumn3.appendChild(thirdCol);
+    tColumn1.appendChild(firstCol);
+    tColumn2.appendChild(secondCol);
+    tColumn3.appendChild(thirdCol);
 
-        trow.appendChild(tColumn1)
-        trow.appendChild(tColumn2)
-        trow.appendChild(tColumn3)
-        // tr.setAttribute()
+    trow.appendChild(tColumn1)
+    trow.appendChild(tColumn2)
+    trow.appendChild(tColumn3)
+    // tr.setAttribute()
 
-        tBody?.append(trow);
-
-    })
+    tBody?.append(trow);
+  })
 }
