@@ -47,4 +47,4 @@ export const populateTable = (tableData: IRows) => {
 
     tBody?.append(trow);
   });
-};
+}

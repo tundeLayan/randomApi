@@ -1,8 +1,10 @@
 import { getData, populateTable } from "./utils";
 
-const pageView = document.querySelector('label[data-pageview="pageView"]');
-const nextBtn = document.querySelector('[data-nextbtn="nextBtn"]');
-const prevBtn = document.querySelector('[data-prevbtn="prevBtn"]');
+const pageViewLabel = document.querySelector(
+  "label[data-pageview]"
+) as HTMLLabelElement;
+const nextBtn = document.querySelector('[data-nextbtn="nextBtn"]') as HTMLButtonElement;
+const prevBtn = document.querySelector('[data-prevbtn="prevBtn"]') as HTMLButtonElement;
 
 let currentPageNumber = 1;
 // we need this arrayIndex value to track array index position
@@ -10,10 +12,10 @@ let arrayIndex = 1;
 let response;
 
 const setPageIndex = (page?: number) => {
-  pageView?.replaceChildren("");
+  pageViewLabel?.replaceChildren("");
   if (page) {
     const currentPageText = document.createTextNode(`Showing Page ${currentPageNumber}`);
-    pageView?.appendChild(currentPageText);
+    pageViewLabel?.appendChild(currentPageText);
   }
 }
 
@@ -30,7 +32,7 @@ const handleNextClick = async () => {
     populateTable(response?.results[0][arrayIndex]);
   } else {
     // make the call
-    arrayIndex+=1;
+    arrayIndex += 1;
     response = await getData(arrayIndex);
     populateTable(response?.results[0][arrayIndex]);
   }
@@ -43,12 +45,12 @@ const handlePrevClick = async () => {
   // if current page is 1, disable prev button
   currentPageNumber === 1 && disableBtn(prevBtn);
   // if current page is odd, make api call
-  if(arrayIndex%2 === 1){
+  if (arrayIndex%2 === 1) {
     arrayIndex -= 1;
     response = await getData(arrayIndex - 1);
     populateTable(response?.results[0][arrayIndex]);
-  }else{
-    arrayIndex-=1;
+  } else {
+    arrayIndex -= 1;
     populateTable(response?.results[0][arrayIndex]);
   }
   setPageIndex(currentPageNumber);
@@ -81,4 +83,4 @@ const startApp = async () => {
   populateTable(response?.results[0][currentPageNumber]);
 };
 
-document.addEventListener('DOMContentLoaded', startApp);
+document.addEventListener("DOMContentLoaded", startApp);
