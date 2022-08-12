@@ -55,6 +55,7 @@ const startApp = async () => {
     }
 
     const handleNextClick = async() => {
+        setPageIndex();
         // currentPageNumber+=1;
         enableBtn(prevBtn);
         // using just this was not enough to track array index
@@ -73,14 +74,16 @@ const startApp = async () => {
         setPageIndex(currentPageNumber);
     }
 
-    const setPageIndex = (page: number) => {
+    const setPageIndex = (page?: number) => {
         pageView?.replaceChildren("");
-        const currentPageText = document.createTextNode(`Showing Page ${page}`);
-        pageView?.appendChild(currentPageText);
+        if(page){
+            const currentPageText = document.createTextNode(`Showing Page ${page}`);
+            pageView?.appendChild(currentPageText);
+        }
     }
 
     const handlePrevClick = async () => {
-        
+        setPageIndex();
         currentPageNumber -= 1;
         // if current page is 1, disable prev button
         currentPageNumber===1 && disableBtn(prevBtn);
