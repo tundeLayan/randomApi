@@ -1,17 +1,17 @@
 import { getData, populateTable } from "./utils";
 
-const pageView = document.querySelector('label[data-pageview]');
+const pageView = document.querySelector('label[data-pageview="pageView"]');
 const nextBtn = document.querySelector('[data-nextbtn="nextBtn"]');
 const prevBtn = document.querySelector('[data-prevbtn="prevBtn"]');
 
-let currentPageNumber=1;
+let currentPageNumber = 1;
 // we need this arrayIndex value to track array index position
 let arrayIndex = 1;
 let response;
 
 const setPageIndex = (page?: number) => {
   pageView?.replaceChildren("");
-  if(page){
+  if (page) {
     const currentPageText = document.createTextNode(`Showing Page ${currentPageNumber}`);
     pageView?.appendChild(currentPageText);
   }
@@ -22,10 +22,10 @@ const handleNextClick = async() => {
   // currentPageNumber+=1;
   enableBtn(prevBtn);
   // using just this was not enough to track array index
-  currentPageNumber+=1;
-  
+  currentPageNumber += 1;
+
   // TODO: check if next exists
-  if(arrayIndex % 2 === 1){
+  if (arrayIndex % 2 === 1) {
     arrayIndex+=1;
     populateTable(response?.results[0][arrayIndex]);
   }else{
