@@ -1,6 +1,6 @@
 import { getData, populateTable } from "./utils";
 
-const pageViewLabel = document.querySelector('[data-pageview]');
+const pageViewLabel = document.querySelector("[data-pageview]");
 const nextBtn = document.querySelector('[data-nextbtn="nextBtn"]');
 const prevBtn = document.querySelector('[data-prevbtn="prevBtn"]');
 
@@ -10,10 +10,10 @@ let arrayIndex = 1;
 let response;
 
 const setPageIndex = (page?: number) => {
-  pageViewLabel?.replaceChildren("");
+  // pageViewLabel?.replaceChildren("");
   if (page) {
     const currentPageText = document.createTextNode(`Showing Page ${currentPageNumber}`);
-    pageViewLabel?.appendChild(currentPageText);
+    pageViewLabel?.replaceChildren(currentPageText);
   }
 }
 
