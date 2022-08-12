@@ -49,6 +49,7 @@ tbody tr:nth-child(even) {
 
 .btn-group button {
   background-color: #04aa6d;
+  
   /* Green background */
   border: 1px solid green;
 

@@ -5,8 +5,8 @@ interface IRow {
   row: number;
   age: number;
   gender: string;
-};
-interface IRows extends Array<IRow>{};
+}
+interface IRows extends Array<IRow> {}
 
 export const getData = async (currentPageNumber: number) => {
   try {
