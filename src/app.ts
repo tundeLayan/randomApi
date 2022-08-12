@@ -3,8 +3,8 @@ import { getData, populateTable } from "./utils";
 const pageViewLabel = document.querySelector(
   "label[data-pageview]"
 );
-const nextBtn = document.querySelector('[data-nextbtn="nextBtn"]');
-const prevBtn = document.querySelector('[data-prevbtn="prevBtn"]');
+const nextBtn = document.querySelector( '[data-nextbtn="nextBtn"]' );
+const prevBtn = document.querySelector( '[data-prevbtn="prevBtn"]' );
 
 let currentPageNumber = 1;
 // we need this arrayIndex value to track array index position
@@ -14,7 +14,7 @@ let response;
 const setPageIndex = (page?: number) => {
   pageViewLabel?.replaceChildren("");
   if (page) {
-    const currentPageText = document.createTextNode(`Showing Page ${currentPageNumber}`);
+    const currentPageText = document.createTextNode( `Showing Page ${currentPageNumber}` );
     pageViewLabel?.appendChild(currentPageText);
   }
 }
