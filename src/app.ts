@@ -17,7 +17,7 @@ const setPageIndex = (page?: number) => {
   }
 }
 
-const handleNextClick = async() => {
+const handleNextClick = async () => {
   setPageIndex();
   // currentPageNumber+=1;
   enableBtn(prevBtn);
@@ -26,9 +26,9 @@ const handleNextClick = async() => {
 
   // TODO: check if next exists
   if (arrayIndex % 2 === 1) {
-    arrayIndex+=1;
+    arrayIndex += 1;
     populateTable(response?.results[0][arrayIndex]);
-  }else{
+  } else {
     // make the call
     arrayIndex+=1;
     response = await getData(arrayIndex);
@@ -41,11 +41,11 @@ const handlePrevClick = async () => {
   setPageIndex();
   currentPageNumber -= 1;
   // if current page is 1, disable prev button
-  currentPageNumber===1 && disableBtn(prevBtn);
+  currentPageNumber === 1 && disableBtn(prevBtn);
   // if current page is odd, make api call
   if(arrayIndex%2 === 1){
-    arrayIndex-=1;
-    response = await getData(arrayIndex -1);
+    arrayIndex -= 1;
+    response = await getData(arrayIndex - 1);
     populateTable(response?.results[0][arrayIndex]);
   }else{
     arrayIndex-=1;
@@ -73,7 +73,7 @@ const startApp = async () => {
   response = await getData(currentPageNumber);
   setPageIndex(currentPageNumber);
   // if there is next, enable next button
-  if(response?.results[0].paging.next){
+  if (response?.results[0].paging.next) {
     enableBtn(nextBtn);
   }
 

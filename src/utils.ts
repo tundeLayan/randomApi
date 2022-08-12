@@ -25,7 +25,7 @@ export const populateTable = (tableData: IRows) => {
   tBody?.replaceChildren("");
 
   // iterate over the tableData
-  tableData?.forEach((data, idx)=>{
+  tableData?.forEach((data) => {
     const trow = document.createElement("tr");
     trow.setAttribute("data-entryid", data.id);
 
@@ -41,11 +41,10 @@ export const populateTable = (tableData: IRows) => {
     tColumn2.appendChild(secondCol);
     tColumn3.appendChild(thirdCol);
 
-    trow.appendChild(tColumn1)
-    trow.appendChild(tColumn2)
-    trow.appendChild(tColumn3)
-    // tr.setAttribute()
+    trow.appendChild(tColumn1);
+    trow.appendChild(tColumn2);
+    trow.appendChild(tColumn3);
 
     tBody?.append(trow);
-  })
-}
+  });
+};
