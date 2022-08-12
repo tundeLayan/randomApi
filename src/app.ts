@@ -1,15 +1,25 @@
 
 const startApp = async () => {
+    const pageView = document.querySelector('label[data-pageview]');
+    const nextBtn = document.querySelector('[data-nextbtn="nextBtn"]');
+    const prevBtn = document.querySelector('[data-prevbtn="prevBtn"]');
+    const tBody = document.querySelector('[data-sink="tableBody"]');
     let currentPageNumber=1;
     // we need this arrayIndex value to track array index position
     let arrayIndex = 1;
     let response;
     const BASE_URL = (pageNumber: number)=>`https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84&page=${pageNumber}`;
 
-    const pageView = document.querySelector('label[data-pageview]');
-    const nextBtn = document.querySelector('[data-nextbtn="nextBtn"]');
-    const prevBtn = document.querySelector('[data-prevbtn="prevBtn"]');
-    const tBody = document.querySelector('[data-sink="tableBody"]');
+    const setPageIndex = (page?: number) => {
+        pageView?.replaceChildren("");
+        if(page){
+            const currentPageText = document.createTextNode(`Showing Page ${currentPageNumber}`);
+            pageView?.appendChild(currentPageText);
+        }
+    }
+    setPageIndex();
+
+
 
     const getData = async (currentPageNumber: number) => {
         try{
@@ -74,13 +84,7 @@ const startApp = async () => {
         setPageIndex(currentPageNumber);
     }
 
-    const setPageIndex = (page?: number) => {
-        pageView?.replaceChildren("");
-        if(page){
-            const currentPageText = document.createTextNode(`Showing Page ${page}`);
-            pageView?.appendChild(currentPageText);
-        }
-    }
+    
 
     const handlePrevClick = async () => {
         setPageIndex();
