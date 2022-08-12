@@ -2,9 +2,9 @@ import { getData, populateTable } from "./utils";
 
 const pageViewLabel = document.querySelector(
   "label[data-pageview]"
-) as HTMLLabelElement;
-const nextBtn = document.querySelector('[data-nextbtn="nextBtn"]') as HTMLButtonElement;
-const prevBtn = document.querySelector('[data-prevbtn="prevBtn"]') as HTMLButtonElement;
+);
+const nextBtn = document.querySelector('[data-nextbtn="nextBtn"]');
+const prevBtn = document.querySelector('[data-prevbtn="prevBtn"]');
 
 let currentPageNumber = 1;
 // we need this arrayIndex value to track array index position
@@ -71,9 +71,9 @@ const startApp = async () => {
   //disable both prev and next buttons until data is loaded
   disableBtn(nextBtn);
   disableBtn(prevBtn);
+  setPageIndex(currentPageNumber);
 
   response = await getData(currentPageNumber);
-  setPageIndex(currentPageNumber);
   // if there is next, enable next button
   if (response?.results[0].paging.next) {
     enableBtn(nextBtn);
